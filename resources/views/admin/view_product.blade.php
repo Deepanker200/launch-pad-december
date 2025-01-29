@@ -30,6 +30,13 @@
             text-align: center;
             color: white;
         }
+
+        input[type='search']
+        {
+            width: 500px;
+            height: 60px;
+            margin-left: 50px;
+        }
     </style>
 </head>
 
@@ -48,6 +55,12 @@
         <div class="page-header">
             <div class="container-fluid">
 
+
+                <form action="{{url('product_search')}}" method="get" class="d-flex justify-content-center align-items-center">
+                    @csrf
+                    <input type="search" name="search">
+                    <input type="submit" class="btn btn-secondary" value="Search">
+                </form>
                 <div class="div_deg">
                     <table class="table_deg">
                         <tr>
@@ -70,8 +83,7 @@
                                 <td>{{ $products->price }}</td>
                                 <td>{{ $products->quantity }}</td>
                                 <td><img height="120" width="120" src="products/{{ $products->image }}"></td>
-                                <td><a class="btn btn-success" onclick="confirmation(event)"
-                                        href="{{ url('delete_product', $products->id) }}">Update</a>
+                                <td><a class="btn btn-success" href="{{ url('update_product', $products->id)}}">Update</a>
                                 </td>
 
                                 <td><a class="btn btn-danger" onclick="confirmation(event)"
