@@ -7,9 +7,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'login_home'])->
+    middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -66,3 +66,6 @@ Route::post('edit_product/{id}', [AdminController::class, 'edit_product'])
 
 Route::get('product_search', [AdminController::class, 'product_search'])
     ->middleware(['auth', 'admin']);
+
+
+Route::get('product_details/{id}',[HomeController::class,'product_details']);
