@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -119,8 +120,8 @@ class AdminController extends Controller
     public function update_product($id)
     {
         $data = Product::find($id);
-        $category=Category::all();
-        return view('admin.update_page', compact('data','category'));
+        $category = Category::all();
+        return view('admin.update_page', compact('data', 'category'));
     }
 
     public function edit_product(Request $request, $id)
@@ -150,19 +151,49 @@ class AdminController extends Controller
 
     public function product_search(Request $request)
     {
-        $search=$request->search;
+        $search = $request->search;
 
-        $product= Product::where('title','LIKE','%'.$search.'%')->
-        orWhere('category','LIKE','%'.$search.'%')->
-        paginate(3);
+        $product = Product::where('title', 'LIKE', '%' . $search . '%')->orWhere('category', 'LIKE', '%' . $search . '%')->paginate(3);
 
-        return view('admin.view_product',compact('product'));
+        return view('admin.view_product', compact('product'));
     }
 
     public function view_order()
     {
-        $data=Order::all();
+        $data = Order::all();
         // $data=Order::paginate(5);
-        return view('admin.order',compact('data'));
+        return view('admin.order', compact('data'));
+    }
+
+    public function on_the_way($id)
+    {
+        $data = Order::find($id);
+
+        $data->status = 'On the way';
+
+        $data->save();
+
+        return redirect('/view_order');
+    }
+    public function delivered($id)
+    {
+        $data = Order::find($id);
+
+        $data->status = 'Delivered';
+
+        $data->save();
+
+        return redirect('/view_order');
+    }
+
+    public function print_pdf($id)
+    {
+
+        $data=Order::find($id);
+
+        $pdf = Pdf::loadView('admin.invoice',compact('data'));
+
+        return $pdf->download('invoice.pdf');
+
     }
 }

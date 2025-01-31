@@ -7,8 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/dashboard', [HomeController::class, 'login_home'])->
-    middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -68,20 +67,31 @@ Route::get('product_search', [AdminController::class, 'product_search'])
     ->middleware(['auth', 'admin']);
 
 
-Route::get('product_details/{id}',[HomeController::class,'product_details']);
+Route::get('product_details/{id}', [HomeController::class, 'product_details']);
 
-Route::get('add_cart/{id}',[HomeController::class,'add_cart'])
-->middleware(['auth', 'verified']);
+Route::get('add_cart/{id}', [HomeController::class, 'add_cart'])
+    ->middleware(['auth', 'verified']);
 
-Route::get('mycart',[HomeController::class,'mycart'])
-->middleware(['auth', 'verified']);
+Route::get('mycart', [HomeController::class, 'mycart'])
+    ->middleware(['auth', 'verified']);
 
 
 Route::get('delete_cart', [HomeController::class, 'remove_cart'])
-->middleware(['auth', 'verified']);
+    ->middleware(['auth', 'verified']);
 
 Route::post('confirm_order', [HomeController::class, 'confirm_order'])
     ->middleware(['auth', 'verified']);
 
 Route::get('view_order', [AdminController::class, 'view_order'])
+    ->middleware(['auth', 'admin']);
+
+
+Route::get('on_the_way/{id}', [AdminController::class, 'on_the_way'])
+    ->middleware(['auth', 'admin']);
+
+
+Route::get('delivered/{id}', [AdminController::class, 'delivered'])
+    ->middleware(['auth', 'admin']);
+
+Route::get('print_pdf/{id}', [AdminController::class, 'print_pdf'])
     ->middleware(['auth', 'admin']);

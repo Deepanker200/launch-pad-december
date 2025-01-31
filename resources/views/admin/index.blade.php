@@ -11,17 +11,17 @@
 
     @include('admin.header')
 
-    
+
     {{-- Sidebar Section --}}
 
     @include('admin.sidebar')
-        <!-- Sidebar Navigation end-->
-        <div class="page-content">
-            <div class="page-header">
-                <div class="container-fluid">
+    <!-- Sidebar Navigation end-->
+    <div class="page-content">
+        <div class="page-header">
+            <div class="container-fluid">
 
-@include('admin.body')
-                </div>
+                @include('admin.body')
+            </div>
         </div>
     </div>
     <!-- JavaScript files-->

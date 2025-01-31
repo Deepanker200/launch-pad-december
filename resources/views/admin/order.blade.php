@@ -16,6 +16,7 @@
             font-size: 18px;
             font-weight: bold;
             text-align: center;
+            color: white;
         }
 
         td{
@@ -51,6 +52,8 @@
                             <th>Price</th>
                             <th>Image</th>
                             <th>Status</th>
+                            <th>Change Status</th>
+                            <th>Print PDF</th>
                         </tr>
                         
                         @foreach ($data as $data)
@@ -62,7 +65,26 @@
                             <td>{{$data->product->title}}</td>
                             <td>{{$data->product->price}}</td>
                             <td><img width="150" src="products/{{$data->product->image}}"></td>
-                            <td>{{$data->status}}</td>
+                            <td>
+                                @if($data->status=='in progress')
+                                <span style='color:red'>{{$data->status}}</span>
+                                
+                                @elseif($data->status=='On the way')
+                                <span style='color:skyblue'>{{$data->status}}</span>
+                                
+                                @else
+                                <span style='color:yellow'>{{$data->status}}</span>
+
+                                @endif
+                            </td>
+
+                            <td>
+                                <a href="{{url('on_the_way',$data->id)}}" class="btn btn-primary">On the way</a>
+
+                                <a href="{{url('delivered',$data->id)}}" class="btn btn-success">Delivered</a>
+                            </td>
+
+                            <td><a class="btn btn-secondary" href="{{url('print_pdf',$data->id)}}">Print PDF</a></td>
                         </tr>
 
                         @endforeach

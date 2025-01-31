@@ -14,7 +14,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $user= User::where('usertype','user')->get()->count();
+
+        $product=Product::all()->count();
+        $order=Order::all()->count();
+
+        $delivered=Order::where('status','Delivered')->get()->count();
+        return view('admin.index',compact('user','product','order','delivered'));
     }
 
     public function home()
