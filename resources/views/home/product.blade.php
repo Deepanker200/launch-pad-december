@@ -24,7 +24,9 @@
                         </div>
                         <div class="p-2">
                         <a class="btn btn-danger" href="{{url('product_details', $products->id)}}">Details</a>  
-                        </div>
+                        <a class="btn btn-primary" href="{{url('add_cart',$products->id)}}">Add to cart</a>  
+  
+                      </div>
                     </div>
 
                 </div>
