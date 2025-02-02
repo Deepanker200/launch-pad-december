@@ -120,7 +120,7 @@ class AdminController extends Controller
     public function update_product($slug)
     {
         // $data = Product::find($id);
-        $data = Product::where('slug',$slug)->get()->first();           //Slug
+        $data = Product::where('slug', $slug)->get()->first();           //Slug
         $category = Category::all();
         return view('admin.update_page', compact('data', 'category'));
     }
@@ -190,11 +190,11 @@ class AdminController extends Controller
     public function print_pdf($id)
     {
 
-        $data=Order::find($id);
+        $data = Order::find($id);
 
-        $pdf = Pdf::loadView('admin.invoice',compact('data'));
+        $pdf = Pdf::loadView('admin.invoice', compact('data'));
 
         return $pdf->download('invoice.pdf');
-
     }
+
 }

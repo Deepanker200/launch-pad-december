@@ -60,7 +60,7 @@ body {
 
 /*header section*/
 .hero_area {
-  padding: 0 45px;
+  /* padding: 0 45px; */
 }
 
 .hero_area.sub_pages {
@@ -74,7 +74,7 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   padding: 10px 0;
-  border-radius: 15px 15px 0 0;
+  /* border-radius: 15px 15px 0 0; */
 }
 
 #navbarSupportedContent.innerpage_navbar {
@@ -237,7 +237,7 @@ a:focus {
   background-color: #000000;
   background-color: black;
   padding: 25px;
-  border-radius: 0 0 15px 15px;
+  /* border-radius: 0 0 15px 15px; */
 }
 
 .slider_section .row {
@@ -741,7 +741,7 @@ a:focus {
   position: relative;
   background-color: #2d2d2d;
   color: #ffffff;
-  margin: 0 45px 45px;
+  /* margin: 0 45px 45px; */
 }
 
 .info_section .social_container {

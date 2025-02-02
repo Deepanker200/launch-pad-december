@@ -74,7 +74,7 @@
       <div class="container">
         <p>
           &copy; <span id="displayYear"></span> All Rights Reserved By
-          <a href="https://html.design/">Web Tech Knowledge</a>
+          <a href="https://freakcoder.com/">Deepanker Tiwari</a>
         </p>
       </div>
     </footer>

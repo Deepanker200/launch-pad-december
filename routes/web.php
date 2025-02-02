@@ -116,3 +116,5 @@ Route::get('shop', [HomeController::class, 'shop']);
 Route::get('why', [HomeController::class, 'why']);
 Route::get('testimonial', [HomeController::class, 'testimonial']);
 Route::get('contact', [HomeController::class, 'contact']);
+
+Route::get('product_search_user', [HomeController::class, 'product_search_user']);

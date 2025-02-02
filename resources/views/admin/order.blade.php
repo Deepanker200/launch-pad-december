@@ -94,7 +94,7 @@
                 </div>
 
                 {{-- <div class="div_deg">
-                    {{ $data->links('pago') }}
+                    {{ $data->onEachSide(1)->links() }}
                 </div> --}}
             </div>
         </div>

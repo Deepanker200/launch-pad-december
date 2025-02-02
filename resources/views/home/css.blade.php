@@ -10,7 +10,7 @@
 <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
 
 <title>
-  Giftos
+  Texh e-commerce
 </title>
 
 <!-- slider stylesheet -->

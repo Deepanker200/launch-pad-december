@@ -284,4 +284,27 @@ class HomeController extends Controller
 
         return view('home.contact',compact('count'));
     }
+
+    public function product_search_user(Request $request)
+    {
+
+        if (Auth::id()) {
+            $user = Auth::user();
+            $userid = $user->id;
+
+            $count = Cart::where('user_id', $userid)->count();
+
+            $search = $request->search;
+
+            $product = Product::where('title', 'LIKE', '%' . $search . '%')->orWhere('category', 'LIKE', '%' . $search . '%')->paginate(3);
+        } else {
+            $count = '';
+            $search = $request->search;
+
+            $product = Product::where('title', 'LIKE', '%' . $search . '%')->orWhere('category', 'LIKE', '%' . $search . '%')->paginate(3);
+        }
+       
+
+        return view('home.shop', compact('product','count'));
+    }
 }
