@@ -56,8 +56,12 @@ Route::get('delete_product/{id}', [AdminController::class, 'delete_product'])
     ->middleware(['auth', 'admin']);
 
 
-Route::get('update_product/{id}', [AdminController::class, 'update_product'])
-    ->middleware(['auth', 'admin']);
+// Route::get('update_product/{id}', [AdminController::class, 'update_product'])
+//     ->middleware(['auth', 'admin']);
+
+//Unique=Slug
+Route::get('update_product/{slug}', [AdminController::class, 'update_product'])
+    ->middleware(['auth', 'admin']);        
 
 
 Route::post('edit_product/{id}', [AdminController::class, 'edit_product'])
@@ -106,3 +110,9 @@ Route::get('print_pdf/{id}', [AdminController::class, 'print_pdf'])
 
 Route::get('/myorders', [HomeController::class, 'myorders'])
     ->middleware(['auth', 'verified']);
+
+
+Route::get('shop', [HomeController::class, 'shop']);
+Route::get('why', [HomeController::class, 'why']);
+Route::get('testimonial', [HomeController::class, 'testimonial']);
+Route::get('contact', [HomeController::class, 'contact']);
