@@ -66,35 +66,7 @@
 
     <div class="div_deg">
 
-        <div class="order_deg">
-            <form action="{{ url('confirm_order') }}" method="POST">
-                @csrf
-                <div class="div_gap">
-                    <label>Receiver Name</label>
 
-                    <input type="text" name="name" value="{{ Auth::user()->name }}">
-                </div>
-
-                <div class="div_gap">
-                    <label>Receiver Address</label>
-
-                    <textarea name="address">{{ Auth::user()->address }}</textarea>
-                </div>
-
-                <div class="div_gap">
-                    <label>Receiver Phone</label>
-
-                    <input type="text" name="phone" value="{{ Auth::user()->phone }}">
-                </div>
-
-
-                <div class="div_gap">
-
-                    <input class="btn btn-primary" type="submit" value="Place Order">
-                </div>
-
-            </form>
-        </div>
         <table>
             <tr>
                 <th>Product Title</th>
@@ -129,6 +101,37 @@
 
     <div class="cart_value">
         <h3>Total Value of Cart is: ${{ $value }}</h3>
+    </div>
+
+    <div class="order_deg d-flex justify-content-center">
+        <form action="{{ url('confirm_order') }}" method="POST">
+            @csrf
+            <div class="div_gap">
+                <label>Receiver Name</label>
+
+                <input type="text" name="name" value="{{ Auth::user()->name }}">
+            </div>
+
+            <div class="div_gap">
+                <label>Receiver Address</label>
+
+                <textarea name="address">{{ Auth::user()->address }}</textarea>
+            </div>
+
+            <div class="div_gap">
+                <label>Receiver Phone</label>
+
+                <input type="text" name="phone" value="{{ Auth::user()->phone }}">
+            </div>
+
+
+            <div class="div_gap">
+
+                <input class="btn btn-primary" type="submit" value="Cash On Delivery">
+                <a class="btn btn-success" href="{{ url('stripe',$value) }}">Pay Using Card</a>
+            </div>
+
+        </form>
     </div>
     @include('home.footer')
 

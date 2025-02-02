@@ -10,7 +10,8 @@
         "laravel/framework": "^11.9",
         "laravel/tinker": "^2.9",
         "php-flasher/flasher-toastr-laravel": "^2.1",
-        "php-flasher/flasher-toastr-symfony": "^2.1"
+        "php-flasher/flasher-toastr-symfony": "^2.1",
+        "stripe/stripe-php": "^16.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",

@@ -7,7 +7,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'home']);
 
-Route::get('/dashboard', [HomeController::class, 'login_home'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [HomeController::class, 'login_home'])
+    ->middleware(['auth', 'verified'])->name('dashboard');
 
 
 Route::middleware('auth')->group(function () {
@@ -82,6 +83,13 @@ Route::get('delete_cart', [HomeController::class, 'remove_cart'])
 Route::post('confirm_order', [HomeController::class, 'confirm_order'])
     ->middleware(['auth', 'verified']);
 
+Route::controller(HomeController::class)->group(function () {
+
+    Route::get('stripe/{value}', 'stripe');
+
+    Route::post('stripe/{value}', 'stripePost')->name('stripe.post');
+});
+
 Route::get('view_order', [AdminController::class, 'view_order'])
     ->middleware(['auth', 'admin']);
 
@@ -95,3 +103,6 @@ Route::get('delivered/{id}', [AdminController::class, 'delivered'])
 
 Route::get('print_pdf/{id}', [AdminController::class, 'print_pdf'])
     ->middleware(['auth', 'admin']);
+
+Route::get('/myorders', [HomeController::class, 'myorders'])
+    ->middleware(['auth', 'verified']);

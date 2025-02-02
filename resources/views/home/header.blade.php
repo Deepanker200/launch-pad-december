@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav  ">
                 <li class="nav-item active">
-                    <a class="nav-link" href="{{url('/')}}">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="shop.html">
@@ -38,9 +38,16 @@
 
                 @if (Route::has('login'))
                     @auth
-                        <a href="{{url('mycart')}}">
+
+
+                        <a href="{{ url('myorders') }}">
+                            My Orders
+                        </a>
+
+
+                        <a href="{{ url('mycart') }}">
                             <i class="fa fa-shopping-bag" aria-hidden="true"></i>
-                           [{{$count}}]
+                            [{{ $count }}]
                         </a>
                         <form style="padding: 10px;" method="POST" action="{{ route('logout') }}">
                             @csrf
