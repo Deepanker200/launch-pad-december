@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactFormMail;
+use App\Mail\welcomemail;
 use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
@@ -9,7 +11,9 @@ use App\Models\User;
 use Stripe;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
+use Svg\Tag\Rect;
 
 class HomeController extends Controller
 {
@@ -306,5 +310,31 @@ class HomeController extends Controller
        
 
         return view('home.shop', compact('product','count'));
+    }
+
+    public function sendMail(Request $request){
+        $request->validate([
+            'name'=>'required',
+            'email'=>'required|email',
+            'phone' => 'required|numeric|digits:10',
+            'msg'=>'required',
+        ]);
+
+        $data=[
+            'name'=>$request->name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'msg'=>$request->msg,
+        ];
+
+
+        $toEmail = "tiwarideepanker@gmail.com";
+
+        Mail::to($toEmail)->send(new ContactFormMail($request->all()));
+
+        toastr()->timeOut(10000)->closeButton()->addSuccess('Email send successfully');
+
+        return redirect()->back();
+
     }
 }

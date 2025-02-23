@@ -118,3 +118,5 @@ Route::get('testimonial', [HomeController::class, 'testimonial']);
 Route::get('contact', [HomeController::class, 'contact']);
 
 Route::get('product_search_user', [HomeController::class, 'product_search_user']);
+
+Route::post('send-mail',[HomeController::class,'sendMail']);

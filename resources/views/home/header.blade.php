@@ -1,5 +1,5 @@
 <header class="header_section">
-    <nav class="navbar navbar-expand-lg custom_nav-container ">
+    <nav class="navbar navbar-expand-lg custom_nav-container px-2 px-sm-0">
         <a class="navbar-brand" href="index.html">
             <span>
                 Texh e-commerce
